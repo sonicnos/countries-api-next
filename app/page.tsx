@@ -108,7 +108,8 @@ export default function Home() {
                       />
                       <p>
                         {country.name.official} is a country in{" "}
-                        {country.subregion}. They speak{" "}
+                        {country.subregion}. They speak
+                        {JSON.stringify(country.languages)}
                       </p>
                     </DialogDescription>
                   </DialogHeader>

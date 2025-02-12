@@ -51,7 +51,10 @@ export default function Home() {
       </h1>
       <div className="flex flex-wrap justify-center gap-3 m-10">
         {data.map((country: Country, index) => (
-          <Card className="h-[450px] w-[300px] overflow-hidden text-start ">
+          <Card
+            key={country.cca3}
+            className="h-[450px] w-[300px] overflow-hidden text-start "
+          >
             <div className="relative h-52">
               <Image
                 src={country.flags.svg || "/placeholder.svg"}
@@ -87,23 +90,26 @@ export default function Home() {
             </CardContent>
             <CardFooter>
               <Dialog key={index}>
-                <DialogTrigger>
-                  <Button>More info</Button>
-                  {/* <CardCountry data={country} /> */}
+                <DialogTrigger className="w-full bg-gray-800 text-white cursor-pointer rounded-lg border-gray-950 h-[35px] hover:bg-slate-700">
+                  <div className="m-auto text-center text-md font-semibold">
+                    More info
+                  </div>
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle className="text-center text-2xl ">
+                    <DialogTitle className="text-center text-2xl mb-5">
                       {country.name.common}
                     </DialogTitle>
                     <DialogDescription>
                       <img
                         src={country.flags.png}
                         alt=""
-                        className="rounded-md"
+                        className="rounded-md mx-auto mb-5 "
                       />
-                      This action cannot be undone. This will permanently delete
-                      your account and remove your data from our servers.
+                      <p>
+                        {country.name.official} is a country in{" "}
+                        {country.subregion}. They speak{" "}
+                      </p>
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
